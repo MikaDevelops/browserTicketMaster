@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>browserTicketMaster - local stand-alone incident handler</title>
+        <script src="file_handling.js"></script>
+        <script src="incidents.js"></script>
+        <script>const incidents = new IncidentHandler();</script>
     </head>
     <body>
         <h1>browserTicektMaster</h1>
-        <script src="file_handling.js"></script>
-        <script src="incidents.js"></script>
+        <input type="file" onchange="incidents.loadDataFromFile(this.files[0])">
     </body>
 </html>
