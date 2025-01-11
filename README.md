@@ -22,6 +22,7 @@ JS, HTML, CSS
 
 ## Project control
 ### Doing
+- [ ] Some sort of data structure to begin with
 
 ### Done
 
