@@ -1,0 +1,19 @@
+incident_number: inc24234
+customer_id: 832
+customer_name: John Smith
+subject: my computer doesn't work
+description: Computer says 'no'. 
+
+incident_number: inc24235
+customer_id: 831
+customer_name: John Smithers
+subject: headphone release smoke
+description: Is it my ears, or is it my "headphone" that puffs smoke?
+
+
+incident_number: inc24236
+customer_id: 827
+customer_name: Mickey Mouser
+subject: Keyboard issue
+description: Oh no my keyboard is soaked in coffee
+and coke.
