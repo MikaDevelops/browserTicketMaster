@@ -38,5 +38,6 @@ JS, HTML, CSS
 - Show only incident and related incidents
 - Incident has a state (work in progress, resolved, new, pending...)
 - Create an incident
+- If incident number is in description, shoudn't be treated as a new incident
 
 ## Version history
