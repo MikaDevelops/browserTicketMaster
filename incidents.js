@@ -26,19 +26,28 @@ class IncidentHandler{
         
     }
     #makeIncidentObject(incidentsText){
+        function makeObject(incidentText){
+            let incidentObject = {};
+            let incidentNumStart = incidentText.indexOf(":")+1;
+            let incidentNumEnd = incidentText.indexOf('\n',incidentNumStart);
+            incidentObject.incident_number = incidentText.slice(incidentNumStart, incidentNumEnd).trim();
+            console.log (incidentObject);
+        }
         let incidentStartIndexes = this.#findStartIndexes(incidentsText);
         let incidentLength = incidentStartIndexes.length;
         if (incidentLength < 1) alert('No incidents in file!');
+        this.incidents = [];
         for (let i=0; i < incidentLength; i++){
-            let incident = "";
+            let incident;
             if (i < incidentLength-1){
-                incident = incidentsText.slice(incidentStartIndexes[i], incidentStartIndexes[i+1]);
+                incident = makeObject(incidentsText.slice(incidentStartIndexes[i], incidentStartIndexes[i+1]));
             }
             else{
-                incident = incidentsText.slice(incidentStartIndexes[i]);
+                incident = makeObject(incidentsText.slice(incidentStartIndexes[i]));
             }
-            console.log(incident);
+            this.incidents.push(incident);
         }
+        console.log(this.incidents);
     }
     #findStartIndexes(incidentsText){
         let indexes = [];
