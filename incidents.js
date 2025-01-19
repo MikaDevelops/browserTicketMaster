@@ -27,6 +27,18 @@ class IncidentHandler{
     }
     #makeIncidentObject(incidentsText){
         let incidentStartIndexes = this.#findStartIndexes(incidentsText);
+        let incidentLength = incidentStartIndexes.length;
+        if (incidentLength < 1) alert('No incidents in file!');
+        for (let i=0; i < incidentLength; i++){
+            let incident = "";
+            if (i < incidentLength-1){
+                incident = incidentsText.slice(incidentStartIndexes[i], incidentStartIndexes[i+1]);
+            }
+            else{
+                incident = incidentsText.slice(incidentStartIndexes[i]);
+            }
+            console.log(incident);
+        }
     }
     #findStartIndexes(incidentsText){
         let indexes = [];
@@ -42,6 +54,6 @@ class IncidentHandler{
             }
         }
         findNext(0);
-        console.log(indexes);
+        return indexes;
     }
 }
