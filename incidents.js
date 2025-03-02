@@ -25,7 +25,7 @@ class IncidentHandler{
 
     }
     sortByCustomerNumber(){
-        if(!this.incidents) return null;
+        if(!this.incidents || this.incidents.length == 0) return null;
         for (let i=0; i<this.incidents.length; i++){
             console.log(this.incidents[i]);
         }
@@ -41,23 +41,28 @@ class IncidentHandler{
     }
     #makeIncidentObject(incidentsText){
         function makeObject(incidentText){
-            console.log(incidentText);
+
             let incidentObject = {};
+
             let incidentNumStart = incidentText.indexOf(":")+1;
             let incidentNumEnd = incidentText.indexOf('\n',incidentNumStart);
             incidentObject.incident_number = incidentText.slice(incidentNumStart, incidentNumEnd).trim();
+
             let customerIdStart = incidentText.indexOf(':', incidentNumEnd)+1;
             let customerIdEnd = incidentText.indexOf('\n', customerIdStart);
             incidentObject.customer_id = incidentText.slice(customerIdStart, customerIdEnd).trim();
+
             let customerNameStart = incidentText.indexOf(':', customerIdEnd)+1;
             let customerNameEnd = incidentText.indexOf('\n', customerNameStart);
             incidentObject.customer_name = incidentText.slice(customerNameStart, customerNameEnd).trim();
+
             let subjectStart = incidentText.indexOf(':', customerNameEnd)+1;
             let subjectEnd = incidentText.indexOf('\n', subjectStart);
             incidentObject.subject = incidentText.slice(subjectStart, subjectEnd).trim();
+
             let descriptionStart = incidentText.indexOf(':', subjectEnd)+1;
-            let descriptionEnd = incidentText.indexOf('\n', descriptionStart);
-            incidentObject.subject = incidentText.slice(descriptionStart).trim();
+            incidentObject.description = incidentText.slice(descriptionStart).trim();
+
             return incidentObject;
         }
         let incidentStartIndexes = this.#findStartIndexes(incidentsText);
