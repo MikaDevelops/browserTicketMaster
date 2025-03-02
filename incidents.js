@@ -24,7 +24,14 @@ class IncidentHandler{
         this.#makeIncidentObject(textFromFile);
         this.updateAllIncidentsToView();
     }
-    updateAllIncidentsToView(){}
+    updateAllIncidentsToView(){
+        let container = document.getElementById('incidentlist');
+        for (let incident of this.incidents){
+            let row = document.createElement('div');
+            row.innerHTML=`${incident.incident_number} subject: ${incident.subject} name: ${incident.customer_name}`;
+            container.appendChild(row);
+        }
+    }
     indexSortedByCustomerNumber(){
         if(!this.incidents || this.incidents.length == 0) return null;
         let sortedByCustomerNumber = {}
