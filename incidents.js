@@ -1,5 +1,5 @@
 /*
-TODO: mickeys coffee and coke in the keyboard -> should take both rows to the description.
+DONE->TODO: mickeys coffee and coke in the keyboard -> should take both rows to the description.
 TODO: sort the cases using customer id (sortByCustomerNumber method).
 */
 
@@ -41,6 +41,7 @@ class IncidentHandler{
     }
     #makeIncidentObject(incidentsText){
         function makeObject(incidentText){
+            console.log(incidentText);
             let incidentObject = {};
             let incidentNumStart = incidentText.indexOf(":")+1;
             let incidentNumEnd = incidentText.indexOf('\n',incidentNumStart);
@@ -56,7 +57,7 @@ class IncidentHandler{
             incidentObject.subject = incidentText.slice(subjectStart, subjectEnd).trim();
             let descriptionStart = incidentText.indexOf(':', subjectEnd)+1;
             let descriptionEnd = incidentText.indexOf('\n', descriptionStart);
-            incidentObject.subject = incidentText.slice(descriptionStart, descriptionEnd).trim();
+            incidentObject.subject = incidentText.slice(descriptionStart).trim();
             return incidentObject;
         }
         let incidentStartIndexes = this.#findStartIndexes(incidentsText);
