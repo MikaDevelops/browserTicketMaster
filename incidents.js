@@ -1,5 +1,6 @@
 /*
 DONE->TODO: mickeys coffee and coke in the keyboard -> should take both rows to the description.
+TODO: list all cases to page.
 TODO: sort the cases using customer id (sortByCustomerNumber method).
 */
 
@@ -21,9 +22,9 @@ class IncidentHandler{
     async loadDataFromFile(file){
         let textFromFile = await file.text();
         this.#makeIncidentObject(textFromFile);
-        this.indexSortedByCustomerNumber();
-
+        this.updateAllIncidentsToView();
     }
+    updateAllIncidentsToView(){}
     indexSortedByCustomerNumber(){
         if(!this.incidents || this.incidents.length == 0) return null;
         let sortedByCustomerNumber = {}
@@ -38,17 +39,16 @@ class IncidentHandler{
                 sortedByCustomerNumber[customer].push({customer: inc_num})
             }
         }
-        console.log(sortedByCustomerNumber)
-   
+        return sortedByCustomerNumber;
     }
     loadDataFromLocalStorage(){
 
     }
-    saveDataToFile(){
-
-    }
     saveDataToLocalStorage(){
         
+    }
+    saveDataToFile(){
+
     }
     #makeIncidentObject(incidentsText){
         function makeObject(incidentText){
