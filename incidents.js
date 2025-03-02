@@ -26,9 +26,20 @@ class IncidentHandler{
     }
     sortByCustomerNumber(){
         if(!this.incidents || this.incidents.length == 0) return null;
+        let sortedByCustomerNumber = {}
         for (let i=0; i<this.incidents.length; i++){
-            console.log(this.incidents[i]);
+            let customer = this.incidents[i].customer_id;
+            let inc_num = this.incidents[i].incident_number;
+            if(customer in sortedByCustomerNumber){
+                sortedByCustomerNumber[customer].push(this.incidents[i].incident_number);
+            }
+            else{
+                sortedByCustomerNumber[customer] = [];
+                sortedByCustomerNumber[customer].push({customer: inc_num})
+            }
         }
+        console.log(sortedByCustomerNumber)
+   
     }
     loadDataFromLocalStorage(){
 
