@@ -21,10 +21,10 @@ class IncidentHandler{
     async loadDataFromFile(file){
         let textFromFile = await file.text();
         this.#makeIncidentObject(textFromFile);
-        this.sortByCustomerNumber();
+        this.indexSortedByCustomerNumber();
 
     }
-    sortByCustomerNumber(){
+    indexSortedByCustomerNumber(){
         if(!this.incidents || this.incidents.length == 0) return null;
         let sortedByCustomerNumber = {}
         for (let i=0; i<this.incidents.length; i++){
