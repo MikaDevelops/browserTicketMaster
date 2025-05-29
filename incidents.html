@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charser="UTF-8">
         <title>browserTicketMaster - local stand-alone incident handler</title>
         <script src="file_handling.js"></script>
         <script src="incidents.js"></script>
         <script>const incidents = new IncidentHandler();</script>
+        <script>window.addEventListener('beforeunload', function (event){
+           let link = document.createElement("a");
+           let filu = new Blob(["jhdfj", {type:'text/plain'}]);
+           link.href = URL.createObjectURL(filu);
+           link.download = "samppeli.txt";
+           link.click();
+           URL.revokeObjectURL(link.href);
+           event.preventDefault();
+        });</script>
     </head>
     <body>
         <h1>browserTicketMaster</h1>
