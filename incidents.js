@@ -19,10 +19,24 @@ class IncidentHandler{
         customer_id: null,
     */
 
-    async loadDataFromFile(file){
+    async loadDataFromFile(file, type){
         let textFromFile = await file.text();
-        this.#makeIncidentObject(textFromFile);
-        this.updateAllIncidentsToView();
+        switch(type){
+            case "new":
+                this.#makeIncidentObject(textFromFile);
+                this.updateAllIncidentsToView();
+                document.getElementById('incident_file').hidden=true;
+                document.getElementById('label_new_incidents').hidden=true;
+                break;
+            case "db":
+                break;
+            default:
+                throw new Error("File type incorrect!");
+                break;
+        }
+        
+        
+        document.getElementById('incident_file').hidden=true;
     }
     updateAllIncidentsToView(){
         let container = document.getElementById('incidentlist');

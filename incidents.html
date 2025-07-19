@@ -5,20 +5,34 @@
         <title>browserTicketMaster - local stand-alone incident handler</title>
         <script src="incidents.js"></script>
         <script>const incidents = new IncidentHandler();</script>
-        <script>window.addEventListener('beforeunload', function (event){
-           let link = document.createElement("a");
-           let filu = new Blob(["jhdfj", {type:'text/plain'}]);
-           link.href = URL.createObjectURL(filu);
-           link.download = "samppeli.txt";
-           link.click();
-           URL.revokeObjectURL(link.href);
-           event.preventDefault();
-        });</script>
+        <script>
+            //const link = document.createElement("a");
+        window.addEventListener('beforeunload', function (event){
+           
+        //    let filu = new Blob(["jhdfj", {type:'text/plain'}]);
+        //    link.href = URL.createObjectURL(filu);
+        //    link.download = "samppeli.txt";
+        //    link.click();
+        //    URL.revokeObjectURL(link.href);
+            event.preventDefault();
+        });
+        function showInsert(){
+            document.getElementById('label_new_incidents').hidden=false;
+            document.getElementById('incident_file').hidden=false;
+        }
+        </script>
 
     </head>
     <body>
         <h1>browserTicketMaster</h1>
-        <input type="file" onchange="incidents.loadDataFromFile(this.files[0]);">
+        <button onclick="showInsert()">insert new incidents</button>
+        <label for="incident_file" id="label_new_incidents" hidden>new incidents</label>
+        <input id="incident_file" type="file" hidden onchange="incidents.loadDataFromFile(this.files[0], 'new');">
+        <br>
+        <label for="incident_db_file" id="label_db">incidents database file</label>
+        <input id="incident_db_file" type="file" onchange="incidents.loadDataFromFile(this.files[0], 'db');">
         <div id="incidentlist"></div>
+        
+
     </body>
 </html>

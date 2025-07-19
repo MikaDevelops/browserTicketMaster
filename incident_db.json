@@ -1,0 +1,13 @@
+[
+    {
+        "customer_name": "test customer 1",
+        "incident_number": 32,
+        "incident_state": "under work",
+        "subject": "I have plenty of troubles with my computer",
+        "description": "cat walked on keyboard and windows doesn't boot anymore",
+        "solution": null,
+        "related_incidents": null,
+        "is_related": false,
+        "customer_id": 77
+    }
+]
